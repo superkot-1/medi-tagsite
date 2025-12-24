@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты MediTag - Поддержка и Экстренная Информация</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .nav-blur { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.9); }
+        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .gradient-text { background: linear-gradient(135deg, #2563eb, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-bg { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
+        .chat-bubble { animation: fadeInUp 0.5s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Навигация -->
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">MediTag</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Главная</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium">О Нас</a>
+                    <a href="contact.html" class="text-blue-600 font-medium">Контакты</a>
+                    <button id="emergencyBtn" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                        Экстренный Доступ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Геройская Секция -->
+    <section class="hero-bg pt-20 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-5xl font-bold text-gray-900 mb-6">
+                    Контакты <span class="gradient-text">MediTag</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Получите поддержку, задайте вопросы или обратитесь за экстренной помощью. 
+                    Мы здесь, чтобы помочь 24/7 с вашими потребностями в медицинской идентификации.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Экстренная Информация -->
+    <section class="py-12 bg-red-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-red-600 rounded-2xl p-8 text-white">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">Экстренная Ситуация?</h2>
+                        <p class="text-red-100 text-lg mb-6">
+                            Если это медицинская экстренная ситуация, пожалуйста, немедленно позвоните 911. 
+                            Для экстренного доступа к MediTag используйте кнопку ниже.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="tel:911" class="bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors text-center">
+                                Позвонить 911
+                            </a>
+                            <button id="emergencyAccessBtn" class="bg-red-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-900 transition-colors">
+                                Экстренный Медицинский Доступ
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-red-700 rounded-full flex items-center justify-center mx-auto">
+                            <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Варианты Контакта -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Форма Поддержки -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-2xl p-8 card-shadow">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Получить Поддержку</h2>
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Имя</label>
+                                    <input type="text" id="firstName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Фамилия</label>
+                                    <input type="text" id="lastName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Адрес</label>
+                                    <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Номер Телефона (Необязательно)</label>
+                                    <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Номер Медицинского Тега (Необязательно)</label>
+                                <input type="text" id="tagNumber" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="MT-XXXXXX">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Тема</label>
+                                <select id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                                    <option value="">Выберите тему</option>
+                                    <option value="registration">Помощь с Регистрацией</option>
+                                    <option value="technical">Техническая Поддержка</option>
+                                    <option value="account">Управление Аккаунтом</option>
+                                    <option value="emergency">Экстренный Доступ</option>
+                                    <option value="billing">Вопросы по Оплате</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Сообщение</label>
+                                <textarea id="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Пожалуйста, опишите ваш вопрос или проблему..." required></textarea>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <input type="checkbox" id="privacyConsent" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" required>
+                                <label for="privacyConsent" class="ml-2 text-sm text-gray-700">
+                                    Я согласен с <a href="#" class="text-blue-600 hover:text-blue-700">Политикой Конфиденциальности</a> и даю согласие на связь по моему запросу.
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                                Отправить Сообщение
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Контактная Информация -->
+                <div class="space-y-6">
+                    <!-- Общая Поддержка -->
+                    <div class="bg-white rounded-2xl p-6 card-shadow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Общая Поддержка</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Email</p>
+                                    <p class="text-gray-600">support@meditag.com</p>
+                                
+<div class="flex items-center space-x-3">
+  <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M9.993 15.674l-.396 5.585c.568 0 .814-.244 1.108-.537l2.662-2.55 5.515 4.03c1.01.557 1.72.264 1.97-.93l3.572-16.75v-.001c.295-1.387-.502-1.93-1.487-1.563L1.64 9.587c-1.35.525-1.33 1.28-.23 1.62l5.77 1.8L20.55 5.8c.63-.39 1.2-.175.73.24"/>
+    </svg>
+  </div>
+  <div>
+    <p class="font-medium text-gray-900">Telegram</p>
+    <p class="text-gray-600">
+      <a href="https://t.me/ossamasson" class="text-blue-600 hover:underline" target="_blank">@ossamasson</a>,
+      <a href="https://t.me/Lasosse" class="text-blue-600 hover:underline" target="_blank">@Lasosse</a>
+    </p>
+  </div>
+</div>
+</div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Телефон</p>
+                                    <p class="text-gray-600">+1 (800) MED-TAG-1</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Часы Работы</p>
+                                    <p class="text-gray-600">24/7 Экстренная Поддержка</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Экстренная Поддержка -->
+                    <div class="bg-red-50 border border-red-200 rounded-2xl p-6">
+                        <h3 class="text-xl font-bold text-red-900 mb-4">Экстренная Поддержка</h3>
+                        <p class="text-red-700 mb-4">
+                            Для немедленного доступа к медицинской информации в чрезвычайных ситуациях:
+                        </p>
+                        <div class="space-y-2">
+                            <a href="tel:+1800EMERGENCY" class="block w-full bg-red-600 hover:bg-red-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-colors">
+                                Экстренная Горячая Линия: (800) EMERGENCY
+                            </a>
+                            <button id="onlineEmergencyBtn" class="block w-full bg-red-100 hover:bg-red-200 text-red-800 text-center py-3 px-4 rounded-lg font-semibold transition-colors">
+                                Онлайн Экстренный Доступ
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Живой Чат -->
+                    <div class="bg-white rounded-2xl p-6 card-shadow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Живой Чат Поддержка</h3>
+                        <div id="chatWidget" class="border border-gray-200 rounded-lg p-4 h-64 overflow-y-auto">
+                            <div class="space-y-3">
+                                <div class="chat-bubble bg-blue-50 p-3 rounded-lg">
+                                    <p class="text-sm text-blue-900">
+                                        <strong>Поддержка MediTag:</strong> Здравствуйте! Как я могу вам помочь сегодня?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex space-x-2">
+                            <input type="text" id="chatInput" placeholder="Введите ваше сообщение..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <button id="sendChatBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                                Отправить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Частые Вопросы о Поддержке</h2>
+                <p class="text-xl text-gray-600">
+                    Быстрые ответы на часто задаваемые вопросы о сервисах MediTag.
+                </p>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="faq-item bg-white rounded-lg card-shadow">
+                    <button class="faq-question w-full text-left px-6 py-4 font-semibold text-gray-900 hover:bg-gray-50 rounded-lg transition-colors">
+                        <div class="flex justify-between items-center">
+                            <span>Как зарегистрировать мой медицинский тег?</span>
+                            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-gray-600">
+                        <p>Регистрация медицинского тега проста. Перейдите на нашу главную страницу, введите 8-значный номер тега и заполните регистрационную форму с вашей медицинской информацией. Процесс занимает около 5 минут.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white rounded-lg card-shadow">
+                    <button class="faq-question w-full text-left px-6 py-4 font-semibold text-gray-900 hover:bg-gray-50 rounded-lg transition-colors">
+                        <div class="flex justify-between items-center">
+                            <span>Что если я потеряю свой медицинский браслет?</span>
+                            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-gray-600">
+                        <p>Если вы потеряете браслет, немедленно свяжитесь с нами. Мы можем помочь вам заказать замену с тем же номером тега, чтобы вся ваша медицинская информация оставалась доступной. Мы также рекомендуем обновить свой аккаунт, отметив браслет как потерянный.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white rounded-lg card-shadow">
+                    <button class="faq-question w-full text-left px-6 py-4 font-semibold text-gray-900 hover:bg-gray-50 rounded-lg transition-colors">
+                        <div class="flex justify-between items-center">
+                            <span>Могут ли спасатели получить доступ к моей информации без интернета?</span>
+                            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-gray-600">
+                        <p>Да, наши QR-коды разработаны для работы офлайн. Спасатели могут отсканировать ваш код любой камерой смартфона для немедленного доступа к вашей критической медицинской информации, даже без подключения к интернету.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white rounded-lg card-shadow">
+                    <button class="faq-question w-full text-left px-6 py-4 font-semibold text-gray-900 hover:bg-gray-50 rounded-lg transition-colors">
+                        <div class="flex justify-between items-center">
+                            <span>Как обновить мою медицинскую информацию?</span>
+                            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-gray-600">
+                        <p>Войдите в свой личный кабинет, используя номер медицинского тега. Оттуда вы можете обновить всю свою медицинскую информацию, добавить новые показания или лекарства, управлять контактами для экстренных случаев. Изменения вступают в силу немедленно.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-3 mb-6">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-2xl font-bold">MediTag</span>
+                </div>
+                <p class="text-gray-400 mb-6">Защищенная Медицинская Технология Идентификации</p>
+                <p class="text-gray-500 text-sm">© 2025 MediTag. Все права защищены. Защита жизней через инновационную медицинскую идентификацию.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Контактная страница - специфический JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeContactPage();
+        });
+
+        function initializeContactPage() {
+            initializeContactForm();
+            initializeFAQ();
+            initializeLiveChat();
+            initializeEmergencyButtons();
+        }
+
+        function initializeContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Показать состояние загрузки
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Отправка...';
+                    submitBtn.disabled = true;
+                    
+                    // Симуляция отправки формы
+                    setTimeout(() => {
+                        window.MediTag.showNotification('Сообщение успешно отправлено! Мы ответим вам в течение 24 часов.', 'success');
+                        contactForm.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 2000);
+                });
+            }
+        }
+
+        function initializeFAQ() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('svg');
+                    
+                    if (answer.classList.contains('hidden')) {
+                        answer.classList.remove('hidden');
+                        icon.style.transform = 'rotate(180deg)';
+                        
+                        anime({
+                            targets: answer,
+                            opacity: [0, 1],
+                            maxHeight: [0, '200px'],
+                            duration: 300,
+                            easing: 'easeOutQuart'
+                        });
+                    } else {
+                        answer.classList.add('hidden');
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        }
+
+        function initializeLiveChat() {
+            const chatInput = document.getElementById('chatInput');
+            const sendChatBtn = document.getElementById('sendChatBtn');
+            const chatWidget = document.getElementById('chatWidget');
+            
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    // Добавить сообщение пользователя
+                    addChatMessage(message, 'user');
+                    chatInput.value = '';
+                    
+                    // Симулировать ответ бота
+                    setTimeout(() => {
+                        const responses = [
+                            'Я понимаю ваш вопрос. Позвольте соединить вас со специалистом, который может помочь.',
+                            'Спасибо за обращение в поддержку MediTag. Как я могу вам помочь сегодня?',
+                            'Я вижу, у вас вопрос о регистрации медицинского тега. Я могу с этим помочь.',
+                            'Для экстренного доступа, пожалуйста, используйте кнопку экстренного доступа вверху страницы.'
+                        ];
+                        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                        addChatMessage(randomResponse, 'support');
+                    }, 1000);
+                }
+            }
+            
+            function addChatMessage(message, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-bubble p-3 rounded-lg mb-2 ${sender === 'user' ? 'bg-blue-100 text-blue-900 ml-8' : 'bg-gray-100 text-gray-900 mr-8'}`;
+                messageDiv.innerHTML = `<p class="text-sm"><strong>${sender === 'user' ? 'Вы' : 'Поддержка MediTag'}:</strong> ${message}</p>`;
+                
+                chatWidget.appendChild(messageDiv);
+                chatWidget.scrollTop = chatWidget.scrollHeight;
+            }
+            
+            if (sendChatBtn && chatInput) {
+                sendChatBtn.addEventListener('click', sendMessage);
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            }
+        }
+
+        function initializeEmergencyButtons() {
+            const emergencyButtons = [
+                document.getElementById('emergencyAccessBtn'),
+                document.getElementById('onlineEmergencyBtn')
+            ];
+            
+            emergencyButtons.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', function() {
+                        window.MediTag.showNotification('Портал экстренного доступа откроется здесь. Это демо-версия.', 'info');
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
